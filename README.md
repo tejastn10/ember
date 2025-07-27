@@ -2,33 +2,43 @@
   <img src="logo.svg" alt="Logo">
 </p>
 
-# Hearth 🔥
+# Ember 🔥
 
 ![Node.js Version](https://img.shields.io/badge/Node.js-22%2B-339933?logo=nodedotjs&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5%2B-007ACC?logo=typescript&logoColor=white)
 ![NestJS](https://img.shields.io/badge/NestJS-11%2B-E0234E?logo=nestjs&logoColor=white)
+![LGTM](https://img.shields.io/badge/Observability-LGTM-blueviolet?logo=grafana&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-yellow?logo=open-source-initiative&logoColor=white)
 
-**Hearth** is a minimal yet powerful backend template built with [NestJS](https://nestjs.com/). It provides a structured foundation for building scalable and maintainable server-side applications. The template includes pre-configured tooling like ESLint, Prettier, Husky, and Commitlint to ensure a smooth development experience and maintain consistent code quality.
+**Ember** is a modern NestJS starter template with production-grade observability out of the box. It’s built for developers who care about performance, reliability, and insight into their applications.
+
+With **Loki**, **Grafana**, **Tempo**, and **Mimir** (the LGTM stack) pre-configured via Docker Compose, Ember provides full-stack observability — including logs, metrics, and traces — ready to go from day one.
 
 ---
 
 ## Features ⚡
 
-- **NestJS**: A progressive Node.js framework for scalable applications.  
-- **TypeScript**: Static typing for better code reliability and maintainability.  
-- **Pre-configured Tooling**:  
-  - **ESLint**: Identify and fix linting issues.  
-  - **Prettier**: Opinionated code formatting.  
-  - **Husky**: Pre-commit hooks for enforcing best practices.  
-  - **Commitlint**: Enforce consistent commit message formatting.  
-- **Modular Architecture**: Designed for scalability and maintainability.  
-- **Swagger API Documentation**:  
+- **NestJS**: A progressive Node.js framework for scalable applications.
+- **TypeScript**: Static typing for better code reliability and maintainability.
+- **Built-in Observability Stack (LGTM)**:
+  - **Loki** – High-performance log aggregation.
+  - **Grafana** – Dashboards and visualization for logs, metrics, and traces.
+  - **Tempo** – Distributed tracing.
+  - **Mimir** – Scalable time-series metrics (Prometheus-compatible).
+- **OpenTelemetry Integration** – Exports traces, metrics, and logs for deep observability.
+- **Pre-configured Tooling**:
+  - **ESLint**: Identify and fix linting issues.
+  - **Prettier**: Opinionated code formatting.
+  - **Husky**: Pre-commit hooks for enforcing best practices.
+  - **Commitlint**: Enforce consistent commit message formatting.
+- **Modular Architecture**: Designed for scalability and maintainability.
+- **Swagger API Documentation**:
   - Built-in OpenAPI (Swagger) integration for easy API exploration.
-- **Database Support**:  
-  - **PostgreSQL**: Integrated with TypeORM for relational database needs.  
-  - **MongoDB**: Uses Mongoose ODM for handling NoSQL collections.  
-- **Developer Experience**: Optimized setup for efficient backend development.  
+- **Database Support**:
+  - **PostgreSQL**: Integrated with TypeORM for relational database needs.
+  - **MongoDB**: Uses Mongoose ODM for handling NoSQL collections.
+- **Redis Cache**: Integrated Redis service for caching and performance optimization.
+- **Developer Experience**: Optimized setup for efficient backend development.
 - **Environment Configuration**: An example `.env` file has been added for reference.
 
 ---
@@ -48,8 +58,8 @@ Ensure you have the following installed:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/tejastn10/hearth.git
-   cd hearth
+   git clone https://github.com/tejastn10/ember.git
+   cd ember
    ```
 
 2. Install dependencies:
@@ -77,6 +87,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) fi
 
 ## Acknowledgments 🙌
 
-- Built with **NestJS** for a structured and scalable backend foundation.
-- Inspired by the warmth of **Hearth**, providing a solid starting point for backend projects.
-- Made with ❤️ for developers who value clean and efficient backend architectures.
+- Built with ❤️ using **NestJS**, **OpenTelemetry**, and the **LGTM Stack**.
+- Inspired by the warmth of a glowing **Ember** — lightweight yet powerful.
+- Designed for developers who want **visibility without the headache**.
