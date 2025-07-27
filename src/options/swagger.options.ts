@@ -1,14 +1,14 @@
 import { InfoObject } from "@nestjs/swagger/dist/interfaces/open-api-spec.interface";
 
 const SwaggerOptions: InfoObject = {
-	title: "Hearth",
-	description: "Hearth's API descriptions & Services",
+	title: "Ember",
+	description: "Ember's API descriptions & Services",
 	version: "1.0.0",
-	// termsOfService: "https://hearth.com/terms-of-service",
+	// termsOfService: "https://ember.com/terms-of-service",
 	// contact: {
-	// 	name: "Hearth Team",
-	// 	email: "contact@hearth.com",
-	// 	url: "https://hearth.com/contact",
+	// 	name: "Ember Team",
+	// 	email: "contact@ember.com",
+	// 	url: "https://ember.com/contact",
 	// },
 	license: {
 		name: "MIT License",

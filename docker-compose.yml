@@ -1,7 +1,7 @@
 services:
   postgres:
     image: postgres
-    container_name: hearth-postgres
+    container_name: ember-postgres
     environment:
       POSTGRES_DB: ${POSTGRES_DATABASE}
       POSTGRES_USER: ${POSTGRES_USERNAME}
@@ -9,32 +9,32 @@ services:
     ports:
       - "${POSTGRES_PORT}:5432"
     volumes:
-      - hearth-postgres:/var/lib/postgresql/data
+      - ember-postgres:/var/lib/postgresql/data
     networks:
-      - hearth-network
+      - ember-network
 
   mongo:
     image: mongo
-    container_name: hearth-mongo
+    container_name: ember-mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
     ports:
       - "${MONGO_PORT}:27017"
     volumes:
-      - hearth-mongo:/data/db
+      - ember-mongo:/data/db
     networks:
-      - hearth-network
+      - ember-network
 
   redis:
     image: redis/redis-stack:latest
-    container_name: hearth-redis
+    container_name: ember-redis
     ports:
       - "${REDIS_PORT:-6379}:6379"
     volumes:
-      - hearth-redis:/data
+      - ember-redis:/data
     networks:
-      - hearth-network
+      - ember-network
     command:
       [
         "redis-server",
@@ -47,10 +47,10 @@ services:
       ]
 
 networks:
-  hearth-network:
+  ember-network:
     driver: bridge
 
 volumes:
-  hearth-postgres:
-  hearth-mongo:
-  hearth-redis:
+  ember-postgres:
+  ember-mongo:
+  ember-redis:

@@ -22,7 +22,7 @@ export class PostgresDBService implements TypeOrmOptionsFactory {
 	createTypeOrmOptions(): TypeOrmModuleOptions {
 		const postgresTypeOrmOptions: TypeOrmModuleOptions = {
 			// Application Name
-			applicationName: this.configService.getString("POSTGRES_APP_NAME") || "Hearth",
+			applicationName: this.configService.getString("POSTGRES_APP_NAME") || "Ember",
 
 			// Default options
 			type: "postgres",
