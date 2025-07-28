@@ -46,6 +46,82 @@ services:
         "allkeys-lru",
       ]
 
+  loki:
+    image: grafana/loki:latest
+    container_name: ember-loki
+    command: -config.file=/etc/loki/local-config.yaml
+    ports:
+      - "3100:3100"
+    volumes:
+      - ember-loki:/loki
+    networks:
+      - ember-network
+
+  promtail:
+    image: grafana/promtail:latest
+    container_name: ember-promtail
+    volumes:
+      - /var/log:/var/log
+      - ./promtail-config.yaml:/etc/promtail/config.yaml
+    command: -config.file=/etc/promtail/config.yaml
+    networks:
+      - ember-network
+    depends_on:
+      - loki
+
+  mimir:
+    image: grafana/mimir:latest
+    container_name: ember-mimir
+    command: ["-config.file=/etc/mimir.yaml"]
+    ports:
+      - "9009:9009"
+    volumes:
+      - ember-mimir:/data
+      - ./mimir.yaml:/etc/mimir.yaml
+    networks:
+      - ember-network
+
+  tempo:
+    image: grafana/tempo:latest
+    container_name: ember-tempo
+    command: ["-config.file=/etc/tempo.yaml"]
+    ports:
+      - "3200:3200" # HTTP API
+      - "4317:4317" # OTLP gRPC
+      - "4318:4318" # OTLP HTTP
+    volumes:
+      - ember-tempo:/var/tempo
+      - ./tempo.yaml:/etc/tempo.yaml
+    networks:
+      - ember-network
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: ember-grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+    ports:
+      - "3000:3000"
+    volumes:
+      - ember-grafana:/var/lib/grafana
+      - ./provisioning:/etc/grafana/provisioning
+    depends_on:
+      - loki
+      - mimir
+      - tempo
+    networks:
+      - ember-network
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: ember-node-exporter
+    ports:
+      - "9100:9100"
+    networks:
+      - ember-network
+
 networks:
   ember-network:
     driver: bridge
@@ -54,3 +130,7 @@ volumes:
   ember-postgres:
   ember-mongo:
   ember-redis:
+  ember-loki:
+  ember-mimir:
+  ember-tempo:
+  ember-grafana:

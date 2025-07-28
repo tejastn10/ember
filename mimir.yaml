@@ -1,0 +1,28 @@
+multitenancy_enabled: false
+
+server:
+  http_listen_port: 9009
+
+blocks_storage:
+  backend: filesystem
+  filesystem:
+    dir: /data/tsdb
+
+ingester:
+  ring:
+    replication_factor: 1
+
+distributor:
+  pool:
+    health_check_ingesters: true
+
+store_gateway:
+  sharding_ring:
+    replication_factor: 1
+
+compactor:
+  data_dir: /data/compactor
+
+limits:
+  ingestion_rate: 20000
+  ingestion_burst_size: 200000
