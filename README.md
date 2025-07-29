@@ -68,14 +68,22 @@ Ensure you have the following installed:
    npm install
    ```
 
-3. Start the development server:
+3. Setup **Loki** as logs need to be stored in a specific directory:
+
+   ```bash
+   sudo mkdir -p /var/log/nestjs
+   sudo touch /var/log/nestjs/app.log
+   sudo chmod -R 777 /var/log/nestjs
+   ```
+
+4. Start the development server:
 
    ```bash
    npm run dev
    ```
 
-4. Your server is now running at `http://localhost:5000`.
-5. To access Swagger API Docs open `http://localhost:5000/docs`.
+5. Your server is now running at `http://localhost:5000`.
+6. To access Swagger API Docs open `http://localhost:5000/docs`.
 
 ---
 
