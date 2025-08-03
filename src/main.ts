@@ -1,3 +1,6 @@
+// IMPORTANT: Initialize telemetry FIRST, before any other imports
+import "./telemetry/telemetry.init";
+
 import { NestFactory } from "@nestjs/core";
 import { Logger, ValidationPipe } from "@nestjs/common";
 import { FastifyAdapter, NestFastifyApplication } from "@nestjs/platform-fastify";
