@@ -68,22 +68,114 @@ Ensure you have the following installed:
    npm install
    ```
 
-3. Setup **Loki** as logs need to be stored in a specific directory:
+3. Check the environment variables:
 
    ```bash
-   sudo mkdir -p /var/log/nestjs
-   sudo touch /var/log/nestjs/app.log
-   sudo chmod -R 777 /var/log/nestjs
+   cat .env
    ```
 
-4. Start the development server:
+4. Start the development server (this will automatically setup directories and start all services):
 
    ```bash
    npm run dev
    ```
 
-5. Your server is now running at `http://localhost:5000`.
-6. To access Swagger API Docs open `http://localhost:5000/docs`.
+5. Your application is now running! Access the following services:
+
+   | Service | URL | Description |
+   |---------|-----|-------------|
+   | **Application** | <http://localhost:5000> | Main NestJS application |
+   | **API Docs (Swagger)** | <http://localhost:5000/docs> | Interactive API documentation |
+   | **Grafana** | <http://localhost:3000> | Observability dashboards (admin/admin) |
+   | **Prometheus** | <http://localhost:9090> | Metrics collection and querying |
+   | **Application Metrics** | <http://localhost:5000/metrics> | Prometheus metrics endpoint |
+
+## 📊 Observability Stack (LGTM)
+
+Ember comes with a complete observability stack that provides insights into your application's behavior:
+
+### 🔍 **What You Get Out of the Box**
+
+- **📈 Metrics**: Application performance, resource usage, and custom business metrics
+- **📝 Logs**: Structured application logs with correlation IDs and context
+- **🔍 Traces**: Distributed tracing across your application stack
+- **📊 Dashboards**: Pre-configured Grafana dashboards for monitoring
+
+### 🎯 **Quick Start Guide**
+
+1. **View Application Metrics**:
+   - Open [Grafana](http://localhost:3000) → "Ember Overview" dashboard
+   - See CPU, memory, request rates, and response times
+
+2. **Explore Distributed Traces**:
+   - Go to [Grafana Explore](http://localhost:3000/explore)
+   - Select "Tempo" datasource
+   - Query: `{.service.name="ember"}` to see all traces
+
+3. **Search Application Logs**:
+   - In [Grafana Explore](http://localhost:3000/explore)
+   - Select "Loki" datasource  
+   - Query: `{container_name="ember-app"}` for application logs
+
+4. **Generate Test Data**:
+
+   ```bash
+   # Generate traces and test error scenarios
+   curl http://localhost:5000/test-errors/database
+   curl http://localhost:5000/test-errors/timeout
+   curl http://localhost:5000/test-errors/http
+   curl http://localhost:5000/health
+   ```
+
+### 📚 **Detailed Documentation**
+
+For comprehensive documentation about the LGTM stack, architecture, and advanced usage, see:
+
+- **[LGTM Stack Guide](./docs/LGTM.md)** - Complete guide to observability stack
+- **[Local Development](./docs/LOCAL_SETUP.md)** - Detailed setup and configuration
+- **[Troubleshooting](./docs/TROUBLESHOOTING.md)** - Common issues and solutions
+
+---
+
+## 🛠️ Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server with hot reload |
+| `npm run build` | Build the application for production |
+| `npm run start` | Start the production server |
+| `npm run test` | Run unit tests |
+| `npm run lint` | Lint and fix code issues |
+| `npm run format` | Format code with Prettier |
+| `npm run database` | Start only the database services |
+
+---
+
+## 🏗️ Architecture
+
+```bash
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Application   │    │  Observability  │    │   Databases     │
+│                 │    │      Stack      │    │                 │
+│ ┌─────────────┐ │    │ ┌─────────────┐ │    │ ┌─────────────┐ │
+│ │   NestJS    │ │───▶│ │   Grafana   │ │    │ │ PostgreSQL  │ │
+│ │ Application │ │    │ │             │ │    │ │             │ │
+│ └─────────────┘ │    │ └─────────────┘ │    │ └─────────────┘ │
+│ ┌─────────────┐ │    │ ┌─────────────┐ │    │ ┌─────────────┐ │
+│ │OpenTelemetry│ │───▶│ │    Tempo    │ │    │ │   MongoDB   │ │
+│ │Instrumentation│ │    │ │  (Traces)   │ │    │ │             │ │
+│ └─────────────┘ │    │ └─────────────┘ │    │ └─────────────┘ │
+│                 │    │ ┌─────────────┐ │    │ ┌─────────────┐ │
+│                 │───▶│ │    Loki     │ │    │ │    Redis    │ │
+│                 │    │ │   (Logs)    │ │    │ │             │ │
+│                 │    │ └─────────────┘ │    │ └─────────────┘ │
+│                 │    │ ┌─────────────┐ │    │                 │
+│                 │───▶│ │ Prometheus  │ │    │                 │
+│                 │    │ │   Mimir     │ │    │                 │
+│                 │    │ │ (Metrics)   │ │    │                 │
+│                 │    │ └─────────────┘ │    │                 │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
 
 ---
 
