@@ -1,5 +1,5 @@
-import { Test, TestingModule } from "@nestjs/testing";
 import { TerminusModule } from "@nestjs/terminus";
+import { Test, type TestingModule } from "@nestjs/testing";
 
 import { AppController } from "./app.controller";
 import { TelemetryService } from "./telemetry/telemetry.service";

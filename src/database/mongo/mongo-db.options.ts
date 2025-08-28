@@ -1,4 +1,4 @@
-import { MongooseModuleAsyncOptions } from "@nestjs/mongoose";
+import type { MongooseModuleAsyncOptions } from "@nestjs/mongoose";
 
 import { ConfigModule } from "../../config/config.module";
 

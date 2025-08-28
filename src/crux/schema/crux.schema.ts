@@ -1,8 +1,7 @@
-import { ApiProperty } from "@nestjs/swagger";
-
-import { Document, HydratedDocument } from "mongoose";
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { IsNotEmpty, IsDateString } from "class-validator";
+import { ApiProperty } from "@nestjs/swagger";
+import { IsDateString, IsNotEmpty } from "class-validator";
+import { Document, type HydratedDocument } from "mongoose";
 
 import { v4 } from "uuid";
 
@@ -39,4 +38,4 @@ class Crux extends Document {
 const CruxSchema = SchemaFactory.createForClass(Crux);
 type CruxDocument = HydratedDocument<Crux>;
 
-export { Crux, CruxSchema, CruxDocument };
+export { Crux, CruxSchema, type CruxDocument };

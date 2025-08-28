@@ -1,14 +1,14 @@
 import {
-	CallHandler,
-	ExecutionContext,
+	type CallHandler,
+	type ExecutionContext,
 	HttpException,
 	HttpStatus,
 	Injectable,
 	Logger,
-	NestInterceptor,
+	type NestInterceptor,
 } from "@nestjs/common";
 
-import { Observable, throwError } from "rxjs";
+import { type Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 
 @Injectable()

@@ -1,11 +1,8 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
-
-import { CoreController as V1CoreController } from "./v1/controllers/core.controller";
-
-import { CoreService as V1CoreService } from "./v1/services/core.service";
-
 import { Core } from "./entities/core.entity";
+import { CoreController as V1CoreController } from "./v1/controllers/core.controller";
+import { CoreService as V1CoreService } from "./v1/services/core.service";
 
 @Module({
 	imports: [

@@ -1,6 +1,6 @@
-import { ValidationPipeOptions } from "@nestjs/common";
+import type { ValidationPipeOptions as Options } from "@nestjs/common";
 
-const ValidationPipeOptions: ValidationPipeOptions = {
+const ValidationPipeOptions: Options = {
 	whitelist: true,
 	transform: true,
 	stopAtFirstError: true,

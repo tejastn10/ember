@@ -1,30 +1,24 @@
 // IMPORTANT: Initialize telemetry FIRST, before any other imports
 import "./telemetry/telemetry.init";
 
-import { NestFactory } from "@nestjs/core";
-import { Logger, ValidationPipe } from "@nestjs/common";
-import { FastifyAdapter, NestFastifyApplication } from "@nestjs/platform-fastify";
-
 import helmet from "@fastify/helmet";
-
+import { Logger, ValidationPipe } from "@nestjs/common";
+import { NestFactory } from "@nestjs/core";
+import { FastifyAdapter, type NestFastifyApplication } from "@nestjs/platform-fastify";
+import { AppModule } from "./app.module";
+import { ConfigModule } from "./config/config.module";
+import { ConfigService } from "./config/config.service";
+import { SwaggerModule } from "./docs/swagger/swagger.module";
+import { SwaggerService } from "./docs/swagger/swagger.service";
 import { ExceptionInterceptor } from "./interceptors/exception.interceptor";
-
 import {
 	CorsOptions,
-	NestOptions,
 	HelmetOptions,
+	NestOptions,
 	SwaggerOptions,
-	VersioningOptions,
 	ValidationPipeOptions,
+	VersioningOptions,
 } from "./options";
-
-import { AppModule } from "./app.module";
-
-import { ConfigModule } from "./config/config.module";
-import { SwaggerModule } from "./docs/swagger/swagger.module";
-
-import { ConfigService } from "./config/config.service";
-import { SwaggerService } from "./docs/swagger/swagger.service";
 
 const bootstrap = async (): Promise<void> => {
 	const FastifyModule = new FastifyAdapter();

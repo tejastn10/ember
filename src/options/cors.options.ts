@@ -1,6 +1,6 @@
-import { type CorsOptions } from "@nestjs/common/interfaces/external/cors-options.interface";
+import type { CorsOptions as Options } from "@nestjs/common/interfaces/external/cors-options.interface";
 
-const CorsOptions: CorsOptions = {
+const CorsOptions: Options = {
 	origin: [
 		// ? Development environment
 		"http://localhost:3000",

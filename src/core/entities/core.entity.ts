@@ -1,7 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
-
+import { IsDateString, IsNotEmpty, IsUUID } from "class-validator";
 import { CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { IsUUID, IsNotEmpty, IsDateString } from "class-validator";
 
 @Entity()
 class Core {

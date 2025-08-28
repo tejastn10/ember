@@ -1,4 +1,4 @@
-import { Tags } from "./types";
+import type { Tags } from "./types";
 
 const moduleTags: Tags[] = [
 	{

@@ -1,6 +1,6 @@
-import { ControllerOptions } from "@nestjs/common";
+import type { ControllerOptions as Options } from "@nestjs/common";
 
-const ControllerOptions: ControllerOptions = {
+const ControllerOptions: Options = {
 	path: "core",
 	version: "1",
 

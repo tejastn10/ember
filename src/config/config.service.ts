@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { ConfigService as NestConfigService } from "@nestjs/config";
+import type { ConfigService as NestConfigService } from "@nestjs/config";
 
 @Injectable()
 export class ConfigService {
@@ -12,7 +12,7 @@ export class ConfigService {
 	getNumber(key: string): number {
 		const value = this.configService.get<number>(key);
 		const numberValue = Number(value);
-		return isNaN(numberValue) ? 0 : numberValue;
+		return Number.isNaN(numberValue) ? 0 : numberValue;
 	}
 
 	getBoolean(key: string): boolean {

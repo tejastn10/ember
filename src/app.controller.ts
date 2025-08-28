@@ -1,19 +1,19 @@
 import { Controller, Get, HttpException, Logger, Res } from "@nestjs/common";
-import { trace } from "@opentelemetry/api";
 import { ApiOperation, ApiTags } from "@nestjs/swagger";
 import {
-	HealthCheckService,
+	type DiskHealthIndicator,
 	HealthCheck,
-	HealthCheckResult,
-	MemoryHealthIndicator,
-	DiskHealthIndicator,
-	HealthIndicatorResult,
-	TypeOrmHealthIndicator,
+	type HealthCheckResult,
+	type HealthCheckService,
+	type HealthIndicatorResult,
+	type MemoryHealthIndicator,
+	type TypeOrmHealthIndicator,
 } from "@nestjs/terminus";
-import { FastifyReply } from "fastify";
+import { trace } from "@opentelemetry/api";
+import type { FastifyReply } from "fastify";
 
 import { ResponseMessage, ResponseStatus } from "./common/enum/response";
-import { TelemetryService } from "./telemetry/telemetry.service";
+import type { TelemetryService } from "./telemetry/telemetry.service";
 
 @ApiTags("Health")
 @Controller()
@@ -37,15 +37,15 @@ export class AppController {
 		// Create a manual trace to test OpenTelemetry
 		const tracer = trace.getTracer("ember-test");
 		const span = tracer.startSpan("manual-test-span");
-		
+
 		span.setAttributes({
 			"test.manual": true,
 			"test.endpoint": "/",
 			"test.timestamp": Date.now(),
 		});
-		
+
 		this.logger.log("Manual span created for testing");
-		
+
 		span.end();
 		return "Server running";
 	}
@@ -96,7 +96,8 @@ export class AppController {
 	@Get("metrics")
 	@ApiOperation({
 		summary: "Prometheus metrics endpoint",
-		description: "This endpoint provides Prometheus-compatible metrics for monitoring and observability.",
+		description:
+			"This endpoint provides Prometheus-compatible metrics for monitoring and observability.",
 	})
 	async metrics(@Res() res: FastifyReply): Promise<void> {
 		try {

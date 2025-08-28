@@ -1,11 +1,8 @@
 import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
-
-import { CruxController as V1CruxController } from "./v1/controllers/crux.controller";
-
-import { CruxService as V1CruxService } from "./v1/services/crux.service";
-
 import { Crux, CruxSchema } from "./schema/crux.schema";
+import { CruxController as V1CruxController } from "./v1/controllers/crux.controller";
+import { CruxService as V1CruxService } from "./v1/services/crux.service";
 
 @Module({
 	imports: [

@@ -1,11 +1,9 @@
-import { Injectable, Logger, NestMiddleware } from "@nestjs/common";
+import { Injectable, Logger, type NestMiddleware } from "@nestjs/common";
 
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 
 @Injectable()
 export class RequestMiddleware implements NestMiddleware {
-	constructor() {}
-
 	private readonly logger = new Logger("Requests");
 
 	private getDurationInMilliseconds(startTime: [number, number]): number {

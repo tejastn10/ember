@@ -1,9 +1,8 @@
 import { Logger } from "@nestjs/common";
 
-import { MongooseModuleFactoryOptions } from "@nestjs/mongoose";
-
-import { DataSource, DataSourceOptions } from "typeorm";
+import type { MongooseModuleFactoryOptions } from "@nestjs/mongoose";
 import mongoose from "mongoose";
+import { DataSource, type DataSourceOptions } from "typeorm";
 
 const initializeDatabaseConnection = async (
 	options: DataSourceOptions | MongooseModuleFactoryOptions

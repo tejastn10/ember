@@ -1,4 +1,4 @@
-import { InfoObject } from "@nestjs/swagger/dist/interfaces/open-api-spec.interface";
+import type { InfoObject } from "@nestjs/swagger/dist/interfaces/open-api-spec.interface";
 
 const SwaggerOptions: InfoObject = {
 	title: "Ember",

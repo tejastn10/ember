@@ -1,26 +1,22 @@
 import {
+	BadRequestException,
+	ConflictException,
+	ImATeapotException,
 	Injectable,
 	Logger,
-	NotFoundException,
-	ConflictException,
-	BadRequestException,
-	ImATeapotException,
 	NotAcceptableException,
+	NotFoundException,
 } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
-
-import { Model } from "mongoose";
 import { ValidationError } from "class-validator";
+import type { Model } from "mongoose";
 
-import { RedisService } from "../../../cache/redis/redis.service";
-
-import { Crux, CruxDocument } from "../../schema/crux.schema";
-
-import { CreateCruxRequestDto, CreateCruxResponseDto } from "../dto/create-crux.dto";
-import { FindCruxResponseDto } from "../dto/find-crux.dto";
-import { UpdateCruxRequestDto, UpdateCruxResponseDto } from "../dto/update-crux.dto";
-
+import type { RedisService } from "../../../cache/redis/redis.service";
 import { ResponseMessage } from "../../../common/enum/response";
+import { Crux, type CruxDocument } from "../../schema/crux.schema";
+import type { CreateCruxRequestDto, CreateCruxResponseDto } from "../dto/create-crux.dto";
+import type { FindCruxResponseDto } from "../dto/find-crux.dto";
+import type { UpdateCruxRequestDto, UpdateCruxResponseDto } from "../dto/update-crux.dto";
 
 @Injectable()
 export class CruxService {

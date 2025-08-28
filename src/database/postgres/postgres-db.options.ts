@@ -1,8 +1,6 @@
-import { TypeOrmModuleAsyncOptions } from "@nestjs/typeorm";
-
-import { PostgresDBService } from "./postgres-db.service";
-
+import type { TypeOrmModuleAsyncOptions } from "@nestjs/typeorm";
 import { ConfigModule } from "../../config/config.module";
+import { PostgresDBService } from "./postgres-db.service";
 
 const PostgresOptions: TypeOrmModuleAsyncOptions = {
 	imports: [ConfigModule],

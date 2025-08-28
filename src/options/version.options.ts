@@ -1,6 +1,6 @@
-import { VersioningType, type VersioningOptions } from "@nestjs/common";
+import { type VersioningOptions as Options, VersioningType } from "@nestjs/common";
 
-const VersioningOptions: VersioningOptions = {
+const VersioningOptions: Options = {
 	type: VersioningType.URI,
 	prefix: "api/v",
 };

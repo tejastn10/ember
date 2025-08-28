@@ -1,7 +1,7 @@
-import { Injectable, Logger, OnModuleInit } from "@nestjs/common";
-import { MongooseModuleOptions, MongooseOptionsFactory } from "@nestjs/mongoose";
+import { Injectable, Logger, type OnModuleInit } from "@nestjs/common";
+import type { MongooseModuleOptions, MongooseOptionsFactory } from "@nestjs/mongoose";
 
-import { ConfigService } from "../../config/config.service";
+import type { ConfigService } from "../../config/config.service";
 import { initializeDatabaseConnection } from "../database.connection";
 
 @Injectable()

@@ -1,14 +1,17 @@
-import { NodeSDK } from "@opentelemetry/sdk-node";
-import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-http";
 import { getNodeAutoInstrumentations } from "@opentelemetry/auto-instrumentations-node";
+import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-http";
+import { NodeSDK } from "@opentelemetry/sdk-node";
 import { BatchSpanProcessor } from "@opentelemetry/sdk-trace-base";
 
 // Telemetry Configuration - Environment variables only (no NestJS ConfigService available yet)
 const config = {
 	serviceName: process.env.OTEL_SERVICE_NAME || "ember",
 	logLevel: process.env.OTEL_LOG_LEVEL || "info",
-	traceEndpoint: process.env.OTEL_EXPORTER_OTLP_TRACES_ENDPOINT || 
-		(process.env.NODE_ENV === "production" ? "http://tempo:4318/v1/traces" : "http://localhost:4318/v1/traces"),
+	traceEndpoint:
+		process.env.OTEL_EXPORTER_OTLP_TRACES_ENDPOINT ||
+		(process.env.NODE_ENV === "production"
+			? "http://tempo:4318/v1/traces"
+			: "http://localhost:4318/v1/traces"),
 	isDevelopment: process.env.NODE_ENV !== "production",
 };
 
@@ -48,8 +51,8 @@ const sdk = new NodeSDK({
 			"@opentelemetry/instrumentation-nestjs-core": { enabled: true },
 			"@opentelemetry/instrumentation-fs": { enabled: false },
 			// Additional instrumentations can be controlled via env vars
-			"@opentelemetry/instrumentation-redis": { 
-				enabled: process.env.OTEL_INSTRUMENT_REDIS !== "false" 
+			"@opentelemetry/instrumentation-redis": {
+				enabled: process.env.OTEL_INSTRUMENT_REDIS !== "false",
 			},
 		}),
 	],

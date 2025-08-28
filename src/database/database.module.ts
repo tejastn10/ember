@@ -1,12 +1,9 @@
 import { Module } from "@nestjs/common";
-
-import { TypeOrmModule } from "@nestjs/typeorm";
 import { MongooseModule } from "@nestjs/mongoose";
-
-import { PostgresOptions } from "./postgres/postgres-db.options";
-import { MongoOptions } from "./mongo/mongo-db.options";
-
+import { TypeOrmModule } from "@nestjs/typeorm";
 import { ConfigModule } from "../config/config.module";
+import { MongoOptions } from "./mongo/mongo-db.options";
+import { PostgresOptions } from "./postgres/postgres-db.options";
 
 @Module({
 	imports: [

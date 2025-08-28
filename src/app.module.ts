@@ -1,22 +1,15 @@
-import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
+import { type MiddlewareConsumer, Module, type NestModule } from "@nestjs/common";
 import { TerminusModule } from "@nestjs/terminus";
-
-import { RequestMiddleware } from "./middlewares/request.middleware";
-import { RequestMiddlewareOptions } from "./options";
-
 import { AppController } from "./app.controller";
-
-import { ConfigModule } from "./config/config.module";
-import { SwaggerModule } from "./docs/swagger/swagger.module";
-
-import { TelemetryModule } from "./telemetry/telemetry.module";
-
 import { CacheModule } from "./cache/cache.module";
-
-import { DatabaseModule } from "./database/database.module";
-
+import { ConfigModule } from "./config/config.module";
 import { CoreModule } from "./core/core.module";
 import { CruxModule } from "./crux/crux.module";
+import { DatabaseModule } from "./database/database.module";
+import { SwaggerModule } from "./docs/swagger/swagger.module";
+import { RequestMiddleware } from "./middlewares/request.middleware";
+import { RequestMiddlewareOptions } from "./options";
+import { TelemetryModule } from "./telemetry/telemetry.module";
 
 @Module({
 	imports: [

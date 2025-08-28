@@ -1,4 +1,4 @@
-import { FastifyHelmetOptions } from "@fastify/helmet";
+import type { FastifyHelmetOptions } from "@fastify/helmet";
 
 const HelmetOptions: FastifyHelmetOptions = {
 	referrerPolicy: { policy: "strict-origin-when-cross-origin" },
