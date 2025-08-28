@@ -15,10 +15,10 @@ import {
 import { ApiOperation, ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { ResponseMessage, ResponseStatus } from "../../../common/enum/response";
 
-import { type CreateCoreRequestDto, CreateCoreResponseDto } from "../dto/create-core.dto";
+import { CreateCoreRequestDto, CreateCoreResponseDto } from "../dto/create-core.dto";
 import { FindCoreResponseDto } from "../dto/find-core.dto";
-import { type UpdateCoreRequestDto, UpdateCoreResponseDto } from "../dto/update-core.dto";
-import type { CoreService } from "../services/core.service";
+import { UpdateCoreRequestDto, UpdateCoreResponseDto } from "../dto/update-core.dto";
+import { CoreService } from "../services/core.service";
 import { ControllerOptions } from "./core.controller.options";
 
 @ApiTags("Core")

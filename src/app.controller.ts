@@ -1,19 +1,19 @@
 import { Controller, Get, HttpException, Logger, Res } from "@nestjs/common";
 import { ApiOperation, ApiTags } from "@nestjs/swagger";
 import {
-	type DiskHealthIndicator,
+	DiskHealthIndicator,
 	HealthCheck,
-	type HealthCheckResult,
-	type HealthCheckService,
-	type HealthIndicatorResult,
-	type MemoryHealthIndicator,
-	type TypeOrmHealthIndicator,
+	HealthCheckResult,
+	HealthCheckService,
+	HealthIndicatorResult,
+	MemoryHealthIndicator,
+	TypeOrmHealthIndicator,
 } from "@nestjs/terminus";
 import { trace } from "@opentelemetry/api";
 import type { FastifyReply } from "fastify";
 
 import { ResponseMessage, ResponseStatus } from "./common/enum/response";
-import type { TelemetryService } from "./telemetry/telemetry.service";
+import { TelemetryService } from "./telemetry/telemetry.service";
 
 @ApiTags("Health")
 @Controller()

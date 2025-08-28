@@ -9,14 +9,14 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { ValidationError } from "class-validator";
-import type { FindManyOptions, Repository } from "typeorm";
+import { FindManyOptions, Repository } from "typeorm";
 
-import type { RedisService } from "../../../cache/redis/redis.service";
+import { RedisService } from "../../../cache/redis/redis.service";
 import { ResponseMessage } from "../../../common/enum/response";
 import { Core } from "../../entities/core.entity";
-import type { CreateCoreRequestDto, CreateCoreResponseDto } from "../dto/create-core.dto";
-import type { FindCoreResponseDto } from "../dto/find-core.dto";
-import type { UpdateCoreRequestDto, UpdateCoreResponseDto } from "../dto/update-core.dto";
+import { CreateCoreRequestDto, CreateCoreResponseDto } from "../dto/create-core.dto";
+import { FindCoreResponseDto } from "../dto/find-core.dto";
+import { UpdateCoreRequestDto, UpdateCoreResponseDto } from "../dto/update-core.dto";
 
 @Injectable()
 export class CoreService {

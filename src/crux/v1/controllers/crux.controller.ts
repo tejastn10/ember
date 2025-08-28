@@ -15,10 +15,10 @@ import {
 import { ApiOperation, ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { ResponseMessage, ResponseStatus } from "../../../common/enum/response";
 
-import { type CreateCruxRequestDto, CreateCruxResponseDto } from "../dto/create-crux.dto";
+import { CreateCruxRequestDto, CreateCruxResponseDto } from "../dto/create-crux.dto";
 import { FindCruxResponseDto } from "../dto/find-crux.dto";
-import { type UpdateCruxRequestDto, UpdateCruxResponseDto } from "../dto/update-crux.dto";
-import type { CruxService } from "../services/crux.service";
+import { UpdateCruxRequestDto, UpdateCruxResponseDto } from "../dto/update-crux.dto";
+import { CruxService } from "../services/crux.service";
 import { ControllerOptions } from "./crux.controller.options";
 
 @ApiTags("Crux")

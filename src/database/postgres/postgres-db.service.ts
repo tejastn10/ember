@@ -1,7 +1,7 @@
 import { Injectable, Logger } from "@nestjs/common";
-import type { TypeOrmModuleOptions, TypeOrmOptionsFactory } from "@nestjs/typeorm";
+import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from "@nestjs/typeorm";
 
-import type { ConfigService } from "../../config/config.service";
+import { ConfigService } from "../../config/config.service";
 
 import { initializeDatabaseConnection } from "../database.connection";
 

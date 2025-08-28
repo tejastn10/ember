@@ -1,8 +1,8 @@
-import { Injectable, Logger, type OnModuleInit } from "@nestjs/common";
+import { Injectable, Logger, OnModuleInit } from "@nestjs/common";
 
-import RedisClient, { type Redis } from "ioredis";
+import RedisClient, { Redis } from "ioredis";
 
-import type { ConfigService } from "../../config/config.service";
+import { ConfigService } from "../../config/config.service";
 
 import { DEFAULT_TTL_SECONDS } from "./constants";
 
