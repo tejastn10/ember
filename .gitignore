@@ -15,6 +15,9 @@ lerna-debug.log*
 # OS
 .DS_Store
 
+# Optional biome cache
+.biome-cache
+
 # Tests
 /coverage
 /.nyc_output
