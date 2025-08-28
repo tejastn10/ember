@@ -27,8 +27,7 @@ With **Loki**, **Grafana**, **Tempo**, and **Mimir** (the LGTM stack) pre-config
   - **Mimir** – Scalable time-series metrics (Prometheus-compatible).
 - **OpenTelemetry Integration** – Exports traces, metrics, and logs for deep observability.
 - **Pre-configured Tooling**:
-  - **ESLint**: Identify and fix linting issues.
-  - **Prettier**: Opinionated code formatting.
+  - **BiomeJS**: Enforces consistent code quality.
   - **Husky**: Pre-commit hooks for enforcing best practices.
   - **Commitlint**: Enforce consistent commit message formatting.
 - **Modular Architecture**: Designed for scalability and maintainability.
