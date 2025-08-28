@@ -58,12 +58,19 @@
 	},
 	"overrides": [
 		{
-			"includes": ["*.ts", "*.tsx"],
+			"includes": ["src/**/*.service.ts", "src/**/*.controller.ts", "src/**/*.module.ts"],
 			"linter": {
 				"rules": {
 					"style": {
-						"useImportType": "error"
-					},
+						"useImportType": "off"
+					}
+				}
+			}
+		},
+		{
+			"includes": ["*.ts", "*.tsx"],
+			"linter": {
+				"rules": {
 					"correctness": {
 						"noUnusedVariables": "error"
 					}
