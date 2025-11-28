@@ -1,12 +1,11 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { ApiProperty } from "@nestjs/swagger";
 import { IsDateString, IsNotEmpty } from "class-validator";
-import { Document, type HydratedDocument } from "mongoose";
-
+import type { HydratedDocument } from "mongoose";
 import { v4 } from "uuid";
 
 @Schema({ timestamps: true })
-class Crux extends Document {
+class Crux {
 	@ApiProperty({
 		example: "67acac20ba6f24776bc0b65d",
 		description: "The UUID of the document.",
