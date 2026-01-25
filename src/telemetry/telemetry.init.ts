@@ -1,3 +1,5 @@
+import { Logger } from "@nestjs/common";
+
 import { getNodeAutoInstrumentations } from "@opentelemetry/auto-instrumentations-node";
 import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-http";
 import { NodeSDK } from "@opentelemetry/sdk-node";
@@ -18,12 +20,14 @@ const config = {
 
 // Only initialize if telemetry is enabled
 if (!config.enableTelemetry) {
-	console.log("[TELEMETRY] OpenTelemetry disabled via OTEL_SDK_DISABLED");
+	Logger.debug("[TELEMETRY] OpenTelemetry disabled via OTEL_SDK_DISABLED");
 	process.exit(0);
 }
 
 // Enable OpenTelemetry debugging
 process.env.OTEL_LOG_LEVEL = config.logLevel;
+
+process.env.OTEL_METRICS_EXPORTER = "none";
 
 // Initialize OpenTelemetry before any other code runs
 const traceExporter = new OTLPTraceExporter({
@@ -47,7 +51,7 @@ const spanProcessor = new BatchSpanProcessor(traceExporter, {
 
 const sdk = new NodeSDK({
 	serviceName: config.serviceName,
-	spanProcessor: spanProcessor,
+	spanProcessors: [spanProcessor],
 	// * Explicitly disabled metrics export since you're using Prometheus scraping
 	metricReader: undefined,
 	instrumentations: [
@@ -65,11 +69,11 @@ const sdk = new NodeSDK({
 
 // Start the SDK before importing any instrumented modules
 sdk.start();
-console.log("[TELEMETRY] OpenTelemetry started successfully");
-console.log(`[TELEMETRY] Service: ${config.serviceName}`);
-console.log(`[TELEMETRY] Traces: ${config.traceEndpoint}`);
-console.log("[TELEMETRY] Metrics: Prometheus scraping /metrics endpoint");
-console.log(`[TELEMETRY] Mode: ${config.isDevelopment ? "Development" : "Production"}`);
+Logger.debug("[TELEMETRY] OpenTelemetry started successfully");
+Logger.debug(`[TELEMETRY] Service: ${config.serviceName}`);
+Logger.debug(`[TELEMETRY] Traces: ${config.traceEndpoint}`);
+Logger.debug("[TELEMETRY] Metrics: Prometheus scraping /metrics endpoint");
+Logger.debug(`[TELEMETRY] Mode: ${config.isDevelopment ? "Development" : "Production"}`);
 
 // Export for graceful shutdown
 export { sdk };
