@@ -13,7 +13,14 @@ const config = {
 			? "http://tempo:4318/v1/traces"
 			: "http://localhost:4318/v1/traces"),
 	isDevelopment: process.env.NODE_ENV !== "production",
+	enableTelemetry: process.env.OTEL_SDK_DISABLED !== "true",
 };
+
+// Only initialize if telemetry is enabled
+if (!config.enableTelemetry) {
+	console.log("[TELEMETRY] OpenTelemetry disabled via OTEL_SDK_DISABLED");
+	process.exit(0);
+}
 
 // Enable OpenTelemetry debugging
 process.env.OTEL_LOG_LEVEL = config.logLevel;
@@ -30,8 +37,6 @@ const traceExporter = new OTLPTraceExporter({
 	},
 });
 
-// Note: Metrics are handled by Prometheus scraping /metrics endpoint (not OTLP push)
-
 // Create a batch span processor optimized for development or production
 const spanProcessor = new BatchSpanProcessor(traceExporter, {
 	maxExportBatchSize: config.isDevelopment ? 1 : 512, // Immediate export for dev
@@ -43,14 +48,14 @@ const spanProcessor = new BatchSpanProcessor(traceExporter, {
 const sdk = new NodeSDK({
 	serviceName: config.serviceName,
 	spanProcessor: spanProcessor,
-	// Note: No metricReader - metrics are exposed via Prometheus format at /metrics endpoint
+	// * Explicitly disabled metrics export since you're using Prometheus scraping
+	metricReader: undefined,
 	instrumentations: [
 		getNodeAutoInstrumentations({
 			"@opentelemetry/instrumentation-http": { enabled: true },
 			"@opentelemetry/instrumentation-express": { enabled: true },
 			"@opentelemetry/instrumentation-nestjs-core": { enabled: true },
 			"@opentelemetry/instrumentation-fs": { enabled: false },
-			// Additional instrumentations can be controlled via env vars
 			"@opentelemetry/instrumentation-redis": {
 				enabled: process.env.OTEL_INSTRUMENT_REDIS !== "false",
 			},
@@ -60,7 +65,6 @@ const sdk = new NodeSDK({
 
 // Start the SDK before importing any instrumented modules
 sdk.start();
-
 console.log("[TELEMETRY] OpenTelemetry started successfully");
 console.log(`[TELEMETRY] Service: ${config.serviceName}`);
 console.log(`[TELEMETRY] Traces: ${config.traceEndpoint}`);
