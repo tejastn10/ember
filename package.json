@@ -37,7 +37,7 @@
 	"engines": {
 		"node": ">=22"
 	},
-	"packageManager": "npm@11.7.0",
+	"packageManager": "npm@11.8.0",
 	"dependencies": {
 		"@fastify/helmet": "^13.0.2",
 		"@fastify/static": "^9.0.0",
@@ -51,13 +51,13 @@
 		"@nestjs/typeorm": "^11.0.0",
 		"@opentelemetry/api": "^1.9.0",
 		"@opentelemetry/api-metrics": "^1.0.0",
-		"@opentelemetry/auto-instrumentations-node": "^0.68.0",
-		"@opentelemetry/exporter-metrics-otlp-http": "^0.210.0",
-		"@opentelemetry/exporter-trace-otlp-grpc": "^0.210.0",
-		"@opentelemetry/exporter-trace-otlp-http": "^0.210.0",
-		"@opentelemetry/sdk-metrics": "^2.4.0",
-		"@opentelemetry/sdk-node": "^0.210.0",
-		"@opentelemetry/sdk-trace-base": "^2.4.0",
+		"@opentelemetry/auto-instrumentations-node": "^0.69.0",
+		"@opentelemetry/exporter-metrics-otlp-http": "^0.211.0",
+		"@opentelemetry/exporter-trace-otlp-grpc": "^0.211.0",
+		"@opentelemetry/exporter-trace-otlp-http": "^0.211.0",
+		"@opentelemetry/sdk-metrics": "^2.5.0",
+		"@opentelemetry/sdk-node": "^0.211.0",
+		"@opentelemetry/sdk-trace-base": "^2.5.0",
 		"class-transformer": "^0.5.1",
 		"class-validator": "^0.14.3",
 		"ioredis": "^5.9.2",
@@ -68,7 +68,7 @@
 		"rxjs": "^7.8.2"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.3.11",
+		"@biomejs/biome": "^2.3.12",
 		"@commitlint/cli": "^20.3.1",
 		"@commitlint/config-conventional": "^20.3.1",
 		"@nestjs/cli": "^11.0.16",
@@ -76,7 +76,7 @@
 		"@nestjs/testing": "^11.1.12",
 		"@types/express": "^5.0.6",
 		"@types/jest": "^30.0.0",
-		"@types/node": "^25.0.9",
+		"@types/node": "^25.0.10",
 		"@types/supertest": "^6.0.3",
 		"@types/uuid": "^11.0.0",
 		"husky": "^9.1.7",
