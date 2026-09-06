@@ -1,16 +1,9 @@
-import { allowedNodeEnvironmentFlags } from "node:process";
 import { Module } from "@nestjs/common";
 import { ConfigModule as NestConfigModule } from "@nestjs/config";
 import { ConfigService } from "./config.service";
 
 @Module({
-	imports: [
-		NestConfigModule.forRoot({
-			validationOptions: {
-				allowedNodeEnvironmentFlags,
-			},
-		}),
-	],
+	imports: [NestConfigModule.forRoot()],
 	providers: [ConfigService],
 	exports: [ConfigService],
 })

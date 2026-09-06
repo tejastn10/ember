@@ -1,7 +1,4 @@
-import type {
-	InfoObject,
-	TagObject,
-} from "@nestjs/swagger/dist/interfaces/open-api-spec.interface";
+import type { InfoObject, TagObject } from "@nestjs/swagger";
 
 type SwaggerDocumentBuilderOptions = InfoObject;
 

@@ -27,7 +27,8 @@ const bootstrap = async (): Promise<void> => {
 
 	// * Security configurations
 	if (isProduction) {
-		FastifyModule.register(helmet, HelmetOptions);
+		// @fastify/helmet's plugin typings don't narrow to this fastify version's FastifyInstance generics
+		FastifyModule.register(helmet as never, HelmetOptions);
 	} else {
 		Logger.warn("Running without Helmet in non-production environment", "Security");
 	}

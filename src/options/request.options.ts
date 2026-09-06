@@ -1,7 +1,6 @@
 import { RequestMethod } from "@nestjs/common";
-import type { RouteInfo } from "@nestjs/common/interfaces";
 
-const RequestMiddlewareOptions: RouteInfo = {
+const RequestMiddlewareOptions = {
 	path: "*",
 	method: RequestMethod.ALL,
 };
